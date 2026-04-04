@@ -173,11 +173,11 @@ fi
 if [[ -d "${srcdir}/modules/luci-mod-system" ]]; then
   THEME_BRANCH="Theme2"
   rm -rf "${srcdir}"
-  gitsvn https://github.com/bottle05/luci-theme-argon/tree/master "${HOME_PATH}/package/luci-theme-argon"
+  gitsvn https://github.com/281677160/luci-theme-argon/tree/master "${HOME_PATH}/package/luci-theme-argon"
 else
   THEME_BRANCH="Theme1"
   rm -rf "${srcdir}"
-  gitsvn https://github.com/bottle05/luci-theme-argon/tree/18.06 "${HOME_PATH}/package/luci-theme-argon"
+  gitsvn https://github.com/281677160/luci-theme-argon/tree/18.06 "${HOME_PATH}/package/luci-theme-argon"
 fi
 
 echo "src-git danshui https://github.com/bottle05/openwrt-package.git;$SOURCE" >> "${HOME_PATH}/feeds.conf.default"
