@@ -131,7 +131,7 @@ fi
 function Diy_feedsconf() {
 local LICENSES_DOC="${GITHUB_WORKSPACE}/openwrt/LICENSES/doc"
 [[ ! -d "${LICENSES_DOC}" ]] && mkdir -p "${LICENSES_DOC}"
-cp -Rf ${GITHUB_WORKSPACE}/openwrt/feeds.conf.default ${LICENSES_DOC}/feeds.conf.default
+cp -Rf "${GITHUB_WORKSPACE}/openwrt/feeds.conf.default" "${LICENSES_DOC}/feeds.conf.default"
 if [[ ! -f "${LICENSES_DOC}/feeds.conf.default" ]]; then
   TIME r "文件下载失败,请检查网络"
   exit 1
