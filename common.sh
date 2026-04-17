@@ -180,7 +180,7 @@ else
   gitsvn https://github.com/281677160/luci-theme-argon/tree/18.06 "${HOME_PATH}/package/luci-theme-argon"
 fi
 
-echo "src-git kiddin9 https://github.com/kiddin9/op-packages.git;$SOURCE" >> "${HOME_PATH}/feeds.conf.default"
+echo "src-git danshui https://github.com/281677160/openwrt-package.git;$SOURCE" >> "${HOME_PATH}/feeds.conf.default"
 echo "src-git dstheme https://github.com/bottle05/openwrt-package.git;$THEME_BRANCH" >> "${HOME_PATH}/feeds.conf.default"
 [[ "${OpenClash_branch}" == "1" ]] && echo "src-git OpenClash https://github.com/vernesong/OpenClash.git;master" >> "${HOME_PATH}/feeds.conf.default"
 [[ "${OpenClash_branch}" == "2" ]] && echo "src-git OpenClash https://github.com/vernesong/OpenClash.git;dev" >> "${HOME_PATH}/feeds.conf.default"
@@ -223,7 +223,7 @@ luci-app-wechatpush,v2ray-core,v2ray-plugin,v2raya,xray-core,xray-plugin,luci-ap
 t=(${z//,/ })
 for x in "${t[@]}"; do
     find "${HOME_PATH}/feeds" "${HOME_PATH}/package" \
-        -path "${HOME_PATH}/feeds/kiddin9" -prune -o \
+        -path "${HOME_PATH}/feeds/danshui" -prune -o \
         -path "${HOME_PATH}/feeds/dstheme" -prune -o \
         -path "${HOME_PATH}/feeds/OpenClash" -prune -o \
         -path "${HOME_PATH}/package/luci-theme-argon" -prune -o \
@@ -231,20 +231,20 @@ for x in "${t[@]}"; do
 done
 
 if [[ ! "${REPO_BRANCH}" =~ ^(main|master|(openwrt-)?(24\.10))$ ]]; then
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-fancontrol
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-qmodem
-  rm -rf ${HOME_PATH}/feeds/kiddin9/relevance/quectel_cm-5G
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-fancontrol
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-qmodem
+  rm -rf ${HOME_PATH}/feeds/danshui/relevance/quectel_cm-5G
 fi
 
 if [[ "${REPO_BRANCH}" =~ ^(2410|(openwrt-)?(24\.10))$ ]]; then
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-quickstart
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-linkease
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-istorex
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-quickstart
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-linkease
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-istorex
 fi
 
 if [[ ! -d "${HOME_PATH}/package/network/config/firewall4" ]]; then
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-nikki
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-homeproxy
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-nikki
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-homeproxy
 fi
 
 # 更新golang和node版本
@@ -252,11 +252,11 @@ gitsvn https://github.com/sbwml/packages_lang_golang ${HOME_PATH}/feeds/packages
 gitsvn https://github.com/sbwml/feeds_packages_lang_node-prebuilt ${HOME_PATH}/feeds/packages/lang/node
 
 # store插件依赖
-if [[ -d "${HOME_PATH}/feeds/kiddin9/relevance/nas-packages/network/services" ]] && [[ ! -d "${HOME_PATH}//package/network/services/ddnsto" ]]; then
-  mv ${HOME_PATH}/feeds/kiddin9/relevance/nas-packages/network/services/* ${HOME_PATH}/package/network/services
+if [[ -d "${HOME_PATH}/feeds/danshui/relevance/nas-packages/network/services" ]] && [[ ! -d "${HOME_PATH}//package/network/services/ddnsto" ]]; then
+  mv ${HOME_PATH}/feeds/danshui/relevance/nas-packages/network/services/* ${HOME_PATH}/package/network/services
 fi
-if [[ -d "${HOME_PATH}/feeds/kiddin9/relevance/nas-packages/multimedia/ffmpeg-remux" ]] && [[ ! -d "${HOME_PATH}/feeds/packages/multimedia/ffmpeg-remux" ]]; then
-  mv ${HOME_PATH}/feeds/kiddin9/relevance/nas-packages/multimedia/ffmpeg-remux ${HOME_PATH}/feeds/packages/multimedia/ffmpeg-remux
+if [[ -d "${HOME_PATH}/feeds/danshui/relevance/nas-packages/multimedia/ffmpeg-remux" ]] && [[ ! -d "${HOME_PATH}/feeds/packages/multimedia/ffmpeg-remux" ]]; then
+  mv ${HOME_PATH}/feeds/danshui/relevance/nas-packages/multimedia/ffmpeg-remux ${HOME_PATH}/feeds/packages/multimedia/ffmpeg-remux
 fi
 
 # tproxy补丁
@@ -346,8 +346,8 @@ cd ${HOME_PATH}
 if [[ "${REPO_BRANCH}" =~ (openwrt-18.06|openwrt-18.06-k5.4) ]]; then
   gitsvn https://github.com/openwrt/routing/tree/openwrt-21.02/bmx6 ${HOME_PATH}/feeds/routing/bmx6
   rm -rf ${HOME_PATH}/feeds/packages/net/shadowsocksr-libev
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-nikki
-  rm -rf ${HOME_PATH}/feeds/kiddin9/luci-app-homeproxy
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-nikki
+  rm -rf ${HOME_PATH}/feeds/danshui/luci-app-homeproxy
 fi
 if [[ "${REPO_BRANCH}" == *"21.02"* ]] || [[ "${REPO_BRANCH}" == *"18.06"* ]] || [[ "${REPO_BRANCH}" == *"23.05"* ]]; then
   gitsvn https://github.com/coolsnowwolf/packages/tree/152022403f0ab2a85063ae1cd9687bd5240fe9b7/net/dnsproxy ${HOME_PATH}/feeds/packages/net/dnsproxy
@@ -365,10 +365,10 @@ function Diy_OFFICIAL() {
 cd ${HOME_PATH}
 if [[ "${REPO_BRANCH}" == "openwrt-19.07" ]]; then
   gitsvn https://github.com/openwrt/openwrt/tree/openwrt-22.03/package/utils/bcm27xx-userland ${HOME_PATH}/package/utils/bcm27xx-userland
-  rm -fr ${HOME_PATH}/feeds/kiddin9/luci-app-kodexplorer
+  rm -fr ${HOME_PATH}/feeds/danshui/luci-app-kodexplorer
 fi
 if [[ "${REPO_BRANCH}" =~ (main|master|openwrt-24.10) ]]; then
-  gitsvn https://github.com/bottle05/common/blob/main/Share/luci-app-nginx-pingos/Makefile ${HOME_PATH}/feeds/kiddin9/luci-app-nginx-pingos/Makefile
+  gitsvn https://github.com/bottle05/common/blob/main/Share/luci-app-nginx-pingos/Makefile ${HOME_PATH}/feeds/danshui/luci-app-nginx-pingos/Makefile
 fi
 if [[ "${REPO_BRANCH}" == *"23.05"* ]]; then
   gitsvn https://github.com/coolsnowwolf/packages/tree/152022403f0ab2a85063ae1cd9687bd5240fe9b7/net/dnsproxy ${HOME_PATH}/feeds/packages/net/dnsproxy
