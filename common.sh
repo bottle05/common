@@ -181,6 +181,7 @@ else
 fi
 
 echo "src-git kiddin9 https://github.com/kiddin9/op-packages.git;main" >> "${HOME_PATH}/feeds.conf.default"
+echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "feeds.conf"
 # echo "src-git danshui https://github.com/281677160/openwrt-package.git;$SOURCE" >> "${HOME_PATH}/feeds.conf.default"
 echo "src-git dstheme https://github.com/281677160/openwrt-package.git;$THEME_BRANCH" >> "${HOME_PATH}/feeds.conf.default"
 [[ "${OpenClash_branch}" == "1" ]] && echo "src-git OpenClash https://github.com/vernesong/OpenClash.git;master" >> "${HOME_PATH}/feeds.conf.default"
