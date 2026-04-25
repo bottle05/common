@@ -181,6 +181,7 @@ else
 fi
 
 echo "src-git kiddin9 https://github.com/kiddin9/op-packages.git;main" >> "${HOME_PATH}/feeds.conf.default"
+echo 'src-git qmodem https://github.com/FUjr/QModem.git;main' >> "${HOME_PATH}/feeds.conf.default"
 #echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "${HOME_PATH}/feeds.conf.default"
 # echo "src-git danshui https://github.com/281677160/openwrt-package.git;$SOURCE" >> "${HOME_PATH}/feeds.conf.default"
 echo "src-git dstheme https://github.com/281677160/openwrt-package.git;$THEME_BRANCH" >> "${HOME_PATH}/feeds.conf.default"
