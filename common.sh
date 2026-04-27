@@ -180,7 +180,7 @@ else
   gitsvn https://github.com/281677160/luci-theme-argon/tree/18.06 "${HOME_PATH}/package/luci-theme-argon"
 fi
 
-echo "src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;main" >> "${HOME_PATH}/feeds.conf.default"
+echo "src-git kenzok8 https://github.com/kenzok8/openwrt-packages.git;master" >> "${HOME_PATH}/feeds.conf.default"
 echo "src-git kiddin9 https://github.com/kiddin9/op-packages.git;main" >> "${HOME_PATH}/feeds.conf.default"
 echo 'src-git qmodem https://gitee.com/qlljcf666/luci-app-qmodem_feeds.git;main' >> "${HOME_PATH}/feeds.conf.default"
 #echo "src-git fancontrol https://github.com/rockjake/luci-app-fancontrol.git" >> "${HOME_PATH}/feeds.conf.default"
